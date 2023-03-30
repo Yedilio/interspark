@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Route, Router, Routes } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, of, Subject, take, takeUntil } from 'rxjs';
 import { JobsServiceService } from '../../service/jobs-service.service';
 import { JobsModel } from '../../models/jobs.model';
