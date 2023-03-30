@@ -1,0 +1,75 @@
+<form class="d-flex justify-content-between">
+  <div class="mb-3 row">
+    <label
+      for="table-filtering-search"
+      class="col-xs-3 col-sm-auto col-form-label"
+      >Search:</label
+    >
+    <div class="col-xs-3 col-sm-auto">
+      <input
+        id="table-filtering-search"
+        class="form-control"
+        type="text"
+        [formControl]="filter"
+      />
+    </div>
+  </div>
+
+  <button
+    type="button"
+    class="btn btn-outline-primary btn-sm mb-3"
+    [routerLink]="'/jobs/new'"
+  >
+    {{ (isAdding$ | async) ? "Back" : "Create Job" }}
+  </button>
+</form>
+
+<ngb-alert
+  *ngIf="errorMessage"
+  [animation]="true"
+  [type]="'danger'"
+  [dismissible]="false"
+  >{{ errorMessage }}</ngb-alert
+>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Job Title</th>
+      <th scope="col">Job Start Date</th>
+      <th scope="col">Job Close Date</th>
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let job of jobs$ | async">
+      <th scope="row">{{ job.id }}</th>
+      <td>
+        {{ job.jobTitle }}
+      </td>
+      <td>{{ job.jobStartDate | date }}</td>
+      <td>{{ job.jobCloseDate | date }}</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-outline-warning btn-sm"
+          [routerLink]="'/jobs/' + job.id"
+        >
+          Update
+        </button>
+      </td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-outline-danger btn-sm"
+          (click)="delete(job)"
+          [disabled]="job?.disabled"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

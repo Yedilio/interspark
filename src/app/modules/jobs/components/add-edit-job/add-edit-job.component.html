@@ -1,0 +1,135 @@
+<form action="" [formGroup]="form" *ngIf="!loading">
+  <div class="card">
+    <div class="card-body">
+      <div class="row mt-1">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="jobNumber" class="mb-2">Job Number</label>
+            <input
+              id="jobNumber"
+              class="form-control"
+              type="text"
+              placeholder="Job Number"
+              formControlName="jobNumber"
+            />
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="form-group">
+            <label for="jobTitle" class="mb-2">Job Title</label>
+            <input
+              id="jobTitle"
+              class="form-control"
+              type="text"
+              placeholder="Job Title"
+              formControlName="jobTitle"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="jobStartDate" class="mb-2">Job Start Date</label>
+            <div class="input-group">
+              <input
+                class="form-control"
+                id="jobStartDate"
+                placeholder="yyyy-mm-dd"
+                name="dp"
+                formControlName="jobStartDate"
+                ngbDatepicker
+                #d="ngbDatepicker"
+              />
+              <button
+                class="btn btn-outline-secondary bi bi-calendar3"
+                (click)="d.toggle()"
+                type="button"
+              ></button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="jobCloseDate" class="mb-2">Job Close Date</label>
+            <div class="input-group">
+              <input
+                class="form-control"
+                id="jobCloseDate"
+                placeholder="yyyy-mm-dd"
+                name="dp"
+                formControlName="jobCloseDate"
+                ngbDatepicker
+                #end="ngbDatepicker"
+              />
+              <button
+                class="btn btn-outline-secondary bi bi-calendar3"
+                (click)="end.toggle()"
+                type="button"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-sm-6 d-flex align-items-center">
+          <div class="form-group">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="experienceRequired"
+              formControlName="experienceRequired"
+            />
+            <label class="form-check-label px-2" for="experienceRequired"
+              >Experience Required</label
+            >
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="numberOfOpenings" class="mb-2"
+              >Number of openings</label
+            >
+            <input
+              id="numberOfOpenings"
+              class="form-control"
+              type="number"
+              placeholder="Number of openings"
+              formControlName="numberOfOpenings"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="form-group">
+          <div class="form-outline">
+            <label class="form-label" for="jobNotes">Job Notes</label>
+            <textarea
+              class="form-control"
+              id="jobNotes"
+              placeholder="Job Notes"
+              rows="4"
+              formControlName="jobNotes"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-end">
+        <button
+          class="btn btn-primary btn-block confirm-button mt-4 me-3"
+          (click)="submit()"
+          [disabled]="form.invalid"
+        >
+          Confirm
+        </button>
+        <button class="btn btn-warning btn-block mt-4" routerLink="/jobs">
+          Back
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
