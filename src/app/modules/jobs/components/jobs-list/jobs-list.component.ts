@@ -24,6 +24,7 @@ export class JobsListComponent implements OnInit, OnDestroy {
   allJobs: JobsModel[] | null = [];
   filter = new FormControl('', { nonNullable: true });
   errorMessage: string = '';
+  loading: boolean = true;
 
   destroy$ = new Subject();
   isAdding$!: Observable<boolean> | null;
@@ -46,6 +47,7 @@ export class JobsListComponent implements OnInit, OnDestroy {
       .subscribe((res) => {
         this.allJobs = res;
         this.filter.setValue('');
+        this.loading = false;
       });
   }
 
