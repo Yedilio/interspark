@@ -81,7 +81,11 @@ export class AddEditJobComponent implements OnInit, OnDestroy {
   }
 
   submit() {
-    console.log('form: ', this.form.getRawValue());
+    this.form.markAllAsTouched();
+    if (this.form.invalid) {
+      return;
+    }
+
     const value = this.form.getRawValue();
     if (!this.isEdit) {
       delete value.id;

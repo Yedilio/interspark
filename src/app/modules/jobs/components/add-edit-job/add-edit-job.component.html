@@ -11,6 +11,11 @@
               type="text"
               placeholder="Job Number"
               formControlName="jobNumber"
+              [ngClass]="{
+                'is-invalid':
+                  form.get('jobNumber')!.touched &&
+                  form.get('jobNumber')!.invalid
+              }"
             />
           </div>
         </div>
@@ -23,6 +28,10 @@
               type="text"
               placeholder="Job Title"
               formControlName="jobTitle"
+              [ngClass]="{
+                'is-invalid':
+                  form.get('jobTitle')!.touched && form.get('jobTitle')!.invalid
+              }"
             />
           </div>
         </div>
@@ -41,12 +50,33 @@
                 formControlName="jobStartDate"
                 ngbDatepicker
                 #d="ngbDatepicker"
+                [ngClass]="{
+                  'is-invalid':
+                    form.get('jobStartDate')!.touched &&
+                    form.get('jobStartDate')!.invalid
+                }"
               />
               <button
-                class="btn btn-outline-secondary bi bi-calendar3"
+                class="btn btn-outline-secondary"
                 (click)="d.toggle()"
                 type="button"
-              ></button>
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-calendar3"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"
+                  />
+                  <path
+                    d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
+                  />
+                </svg>
+              </button>
             </div>
           </div>
         </div>
@@ -62,12 +92,33 @@
                 formControlName="jobCloseDate"
                 ngbDatepicker
                 #end="ngbDatepicker"
+                [ngClass]="{
+                  'is-invalid':
+                    form.get('jobCloseDate')!.touched &&
+                    form.get('jobCloseDate')!.invalid
+                }"
               />
               <button
-                class="btn btn-outline-secondary bi bi-calendar3"
+                class="btn btn-outline-secondary"
                 (click)="end.toggle()"
                 type="button"
-              ></button>
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-calendar3"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"
+                  />
+                  <path
+                    d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
+                  />
+                </svg>
+              </button>
             </div>
           </div>
         </div>
@@ -122,8 +173,9 @@
         <button
           class="btn btn-primary btn-block confirm-button mt-4 me-3"
           (click)="submit()"
-          [disabled]="form.invalid"
         >
+          <!--          [disabled]="form.invalid"-->
+          <!--        >-->
           Confirm
         </button>
         <button class="btn btn-warning btn-block mt-4" routerLink="/jobs">
